@@ -7,7 +7,7 @@ plugins {
 
 archivesBaseName='pomaranch-client'
 group = 'com.pomaranch.shop'
-version = '1.o'
+version = '1.0'
 
 java {
     sourceCompatibility = '17'
