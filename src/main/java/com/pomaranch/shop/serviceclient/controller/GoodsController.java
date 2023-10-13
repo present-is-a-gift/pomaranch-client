@@ -4,6 +4,7 @@ import com.pomaranch.shop.serviceclient.model.Product;
 import com.pomaranch.shop.serviceclient.service.GoodsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,5 +20,10 @@ public class GoodsController {
     @GetMapping
     public List<Product> getAll() {
         return goodsService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable Integer id) {
+        return goodsService.getById(id);
     }
 }

@@ -3,6 +3,7 @@ package com.pomaranch.shop.serviceclient.service;
 import com.pomaranch.shop.Goods;
 import com.pomaranch.shop.GoodsListRequest;
 import com.pomaranch.shop.GoodsListResponse;
+import com.pomaranch.shop.GoodsRequest;
 import com.pomaranch.shop.GoodsServiceGrpc;
 import com.pomaranch.shop.serviceclient.model.Product;
 import net.devh.boot.grpc.client.inject.GrpcClient;
@@ -31,5 +32,15 @@ public class GoodsService {
                         .name(goods.getName())
                         .build())
                 .toList();
+    }
+
+    public Product getById(Integer id) {
+        Goods goods = serviceBlockingStub.getGoodsById(
+                GoodsRequest.newBuilder().setId(id).build()
+        );
+        return Product.builder()
+                .id(goods.getId())
+                .name(goods.getName())
+                .build();
     }
 }
